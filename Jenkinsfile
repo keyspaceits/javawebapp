@@ -1,8 +1,13 @@
 pipeline {
+	parameters {
+		choice(choices: ['Dev', 'QA'], description: 'Target for build  env', name: 'env')
+		choice(choices: ['Y','N'], description: 'is the deployment for release' , name: 'isRelease')
+	}
+	
     agent any
     tools {
-    maven 'Maven3.8.4'	
-	}
+    maven 'Maven3.8.4'
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -12,7 +17,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn clean install -f pom.xml'
-	    }
+            }
 	}
     }
 }
