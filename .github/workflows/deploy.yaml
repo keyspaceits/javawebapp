@@ -21,7 +21,7 @@ jobs:
       run: mvn clean package
 
     - name: Upload WAR file as artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: my-app-war
         path: target/*.war
@@ -32,7 +32,7 @@ jobs:
 
     steps:
     - name: Download WAR file artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: my-app-war
         path: ./deploy
